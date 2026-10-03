@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QApplication, QTextEdit, QWidget
 from PySide6.QtCore import Qt
 from configuration import Configuration
 from instructions import instructions
-from styles import styles
+from styles import get_styles
 
 class DraggableTextEdit(QTextEdit):
     def __init__(self):
@@ -58,7 +58,7 @@ class Overlay(QWidget):
 
         self.text_area.setPlainText(instructions)
 
-        self.text_area.setStyleSheet(styles())
+        self.text_area.setStyleSheet(get_styles())
 
         from PySide6.QtWidgets import QVBoxLayout
         layout = QVBoxLayout(self)

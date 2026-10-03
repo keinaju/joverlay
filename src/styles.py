@@ -1,6 +1,6 @@
 from configuration import Configuration
 
-def styles():
+def get_styles():
     return f"""
 QTextEdit {{
     background-color: {Configuration.get("background-color", "rgba(0, 0, 0, 200)")};
