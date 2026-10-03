@@ -2,6 +2,7 @@ import sys
 import json
 from PySide6.QtWidgets import QApplication, QTextEdit, QWidget
 from PySide6.QtCore import Qt
+from instructions import instructions
 
 class Configuration:
     CONFIGURATION_FILE = "configuration.json"
@@ -66,9 +67,12 @@ class Overlay(QWidget):
 
         # Create a scrollable text area
         self.text_area = DraggableTextEdit()
+
         self.text_area.setLineWrapMode(
             QTextEdit.LineWrapMode.WidgetWidth
         )
+
+        self.text_area.setPlainText(instructions)
 
         self.text_area.setStyleSheet("""
             QTextEdit {
