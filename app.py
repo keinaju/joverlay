@@ -56,7 +56,6 @@ class Overlay(QWidget):
                 background-color: rgba(0, 0, 0, 200);
                 font-family: 'Consolas';
                 font-size: 20px;
-                font-weight: bold;
             }
         """)
 
