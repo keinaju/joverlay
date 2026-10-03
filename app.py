@@ -1,4 +1,4 @@
-
+import ctypes
 import sys
 from PySide6.QtWidgets import QApplication, QWidget, QLabel
 from PySide6.QtCore import Qt
@@ -13,6 +13,22 @@ class Content:
                 TEXT = f"File '{FILENAME}' was found but is empty."
     except FileNotFoundError:
         TEXT = f"No text file '{FILENAME}' found."
+
+def enable_click_through(self):
+    hwnd = int(self.winId())
+
+    GWL_EXSTYLE = -20
+    WS_EX_LAYERED = 0x00080000
+    WS_EX_TRANSPARENT = 0x00000020
+
+    user32 = ctypes.windll.user32
+
+    style = user32.GetWindowLongW(hwnd, GWL_EXSTYLE)
+    user32.SetWindowLongW(
+        hwnd,
+        GWL_EXSTYLE,
+        style | WS_EX_LAYERED | WS_EX_TRANSPARENT
+    )
 
 class Overlay(QWidget):
     def __init__(self):
@@ -50,6 +66,7 @@ class Overlay(QWidget):
         self.setGeometry(2000, 0, 560, 100)
 
         self.show()
+        enable_click_through(self)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
