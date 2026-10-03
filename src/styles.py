@@ -7,7 +7,7 @@ QTextEdit {{
     border: none;
     color: {Configuration.get("text-color", "rgba(255, 255, 255, 255)")};
     font-family: 'Consolas';
-    font-size: 20px;
+    font-size: {Configuration.get("font-size", "16px")};
 }}
 
 QScrollBar:vertical {{
