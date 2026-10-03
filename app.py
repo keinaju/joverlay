@@ -36,11 +36,9 @@ class Overlay(QWidget):
         self.label.setStyleSheet("""
             QLabel {
                 color: white;
-                background-color: rgba(0, 0, 0, 160);
-                font-size: 28px;
+                background-color: rgba(0, 0, 0, 128);
+                font-size: 16px;
                 font-weight: bold;
-                padding: 10px;
-                border-radius: 8px;
             }
         """)
 
@@ -49,7 +47,7 @@ class Overlay(QWidget):
         layout.addWidget(self.label)
 
         # Position and size
-        self.setGeometry(100, 100, 400, 70)
+        self.setGeometry(2000, 0, 560, 100)
 
         self.show()
 
