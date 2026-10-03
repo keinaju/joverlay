@@ -49,6 +49,7 @@ class Overlay(QWidget):
 
         # Overlay text
         self.label = QLabel(Content.TEXT)
+        self.label.setWordWrap(True)
         self.label.setStyleSheet("""
             QLabel {
                 color: white;
