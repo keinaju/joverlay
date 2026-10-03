@@ -1,25 +1,9 @@
 import sys
-import json
 from PySide6.QtWidgets import QApplication, QTextEdit, QWidget
 from PySide6.QtCore import Qt
+from configuration import Configuration
 from instructions import instructions
-
-class Configuration:
-    CONFIGURATION_FILE = "configuration.json"
-
-    _configuration = {}
-
-    try:
-        with open(CONFIGURATION_FILE, "r") as file:
-            _configuration = json.loads(file.read())
-    except FileNotFoundError as e:
-        print(f"Configuration file '{CONFIGURATION_FILE}' not found.")
-    except json.JSONDecodeError:
-        print(f"Configuration file '{CONFIGURATION_FILE}' is not valid JSON. Ensure file contains correct JSON syntax.")
-
-    @classmethod
-    def get(cls, key, default=None):
-        return cls._configuration.get(key, default)
+from styles import styles
 
 class DraggableTextEdit(QTextEdit):
     def __init__(self):
@@ -74,25 +58,7 @@ class Overlay(QWidget):
 
         self.text_area.setPlainText(instructions)
 
-        self.text_area.setStyleSheet("""
-            QTextEdit {
-                background-color: rgba(0, 0, 0, 200);
-                border: none;
-                color: white;
-                font-family: 'Consolas';
-                font-size: 20px;
-            }
-
-            QScrollBar:vertical {
-                background: rgba(255, 255, 255, 30);
-                width: 8px;
-            }
-
-            QScrollBar::handle:vertical {
-                background: rgba(255, 255, 255, 150);
-                min-height: 20px;
-            }
-        """)
+        self.text_area.setStyleSheet(styles())
 
         from PySide6.QtWidgets import QVBoxLayout
         layout = QVBoxLayout(self)
