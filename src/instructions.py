@@ -1,4 +1,6 @@
 instructions = "" \
+"Welcome to JOverlay!" \
+"\n\n" \
 "Use copy and paste to add text to the widget." \
 "\n\n" \
 "Use Alt + Left Mouse Button to drag the widget." \
