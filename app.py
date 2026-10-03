@@ -54,7 +54,8 @@ class Overlay(QWidget):
             QLabel {
                 color: white;
                 background-color: rgba(0, 0, 0, 128);
-                font-size: 16px;
+                font-family: 'Consolas';
+                font-size: 20px;
                 font-weight: bold;
             }
         """)
@@ -64,7 +65,7 @@ class Overlay(QWidget):
         layout.addWidget(self.label)
 
         # Position and size
-        self.setGeometry(2000, 0, 560, 100)
+        self.setGeometry(2000, 200, 560, 100)
 
         self.show()
         enable_click_through(self)
