@@ -1,8 +1,9 @@
-# Joverlay
+# JOverlay
 
-Simple text overlay application. 
+JOverlay is a simple text overlay application.
 
-Displays automatically on top of windowed and borderless applications.
+Displays automatically on top of windowed and borderless applications,
+for example to show custom instructions on top of games.
 
 # How to run
 
