@@ -20,6 +20,34 @@ class Configuration:
     def get(cls, key, default=None):
         return cls._configuration.get(key, default)
 
+class DraggableTextEdit(QTextEdit):
+    def __init__(self):
+        super().__init__()
+        self._drag_offset = None
+
+    def mousePressEvent(self, event):
+        if (event.button() == Qt.MouseButton.LeftButton
+                and event.modifiers() & Qt.KeyboardModifier.AltModifier):
+            self._drag_offset = event.globalPosition().toPoint() - self.window().pos()
+            event.accept()
+            return
+        super().mousePressEvent(event)
+
+    def mouseMoveEvent(self, event):
+        if self._drag_offset is not None:
+            self.window().move(event.globalPosition().toPoint() - self._drag_offset)
+            event.accept()
+            return
+        super().mouseMoveEvent(event)
+
+    def mouseReleaseEvent(self, event):
+        if (event.button() == Qt.MouseButton.LeftButton
+                and self._drag_offset is not None):
+            self._drag_offset = None
+            event.accept()
+            return
+        super().mouseReleaseEvent(event)
+
 class Overlay(QWidget):
     def __init__(self):
         super().__init__()
@@ -37,7 +65,7 @@ class Overlay(QWidget):
         )
 
         # Create a scrollable text area
-        self.text_area = QTextEdit()
+        self.text_area = DraggableTextEdit()
         self.text_area.setLineWrapMode(
             QTextEdit.LineWrapMode.WidgetWidth
         )
