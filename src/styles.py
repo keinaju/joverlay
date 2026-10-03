@@ -5,7 +5,7 @@ def styles():
 QTextEdit {{
     background-color: {Configuration.get("background-color", "rgba(0, 0, 0, 200)")};
     border: none;
-    color: white;
+    color: {Configuration.get("text-color", "rgba(255, 255, 255, 255)")};
     font-family: 'Consolas';
     font-size: 20px;
 }}
